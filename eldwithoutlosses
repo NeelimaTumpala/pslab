@@ -1,0 +1,21 @@
+%Economic load dispatch without losses
+clc
+clear all
+disp=('input data')
+alpha=input('Enter the alpha value in cost fnction: ')
+beta=input('Enter the beta value in cost function: ')
+pd=input('Enter the total load in MW: ')
+gamma=input('Enter the gamma value in cost function: ')
+delp=10;
+lamda=input('enter the sentimental value of lamda: ')
+iter=0;
+while abs(delp)>=0.001
+    iter=iter+1;
+    p=((lamda-beta)./(2*gamma));
+    delp=pd-sum(p);
+    j=sum(ones(length(gamma),1)./(2*gamma));
+    dellamda=delp/j;
+    disp=([lamda,p(1),p(2),p(3),delp,j,dellamda])
+    lamda=lamda+dellamda;
+end
+totalcost=sum(alpha+beta.*p+gamma.*p.^2)
