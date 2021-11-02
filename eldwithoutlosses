@@ -19,3 +19,63 @@ while abs(delp)>=0.001
     lamda=lamda+dellamda;
 end
 totalcost=sum(alpha+beta.*p+gamma.*p.^2)
+
+
+output:
+
+disp =
+
+input data
+
+Enter the alpha value in cost fnction: [600;400;300]
+
+alpha =
+
+   600
+   400
+   300
+
+Enter the beta value in cost function: [5.3;5.5;5.8]
+
+beta =
+
+    5.3000
+    5.5000
+    5.8000
+
+Enter the total load in MW: 800
+
+pd =
+
+   800
+
+Enter the gamma value in cost function: [0.004;0.006;0.0009]
+
+gamma =
+
+    0.0040
+    0.0060
+    0.0009
+
+enter the sentimental value of lamda: 5
+
+lamda =
+
+     5
+
+
+disp =
+
+   1.0e+03 *
+
+    0.0050   -0.0375   -0.0417   -0.4444    1.3236    0.7639    0.0017
+
+
+disp =
+
+    6.7327  179.0909  102.7273  518.1818    0.0000  763.8889    0.0000
+
+
+totalcost =
+
+   6.2529e+03
