@@ -1,0 +1,51 @@
+%Program for transien tstability by point by point method
+clc
+clear all
+t=0;% time taken for solution is from 0 to 1 sec
+tf=0,% it is fault occurance time
+tfinal=1.0;
+tstep=0.05;
+tc=0.125;
+delta=21.64*pi/180;
+ddelta=0;
+h=2.52;
+f=50;
+m=h/(810*f);
+ps=0.9;
+pm1=2.44;
+pm2=0.88;
+pm3=2.0;
+ang(1)=21.64
+time(1)=0;
+i=2;
+while(t<final)
+    if(t==tf)
+        paminus=ps-pm1*sin(delta);
+        paplus=ps-pm2*sin(delta);
+        paav=(paminus+paplus)/2;
+        pa=paav;
+    end
+    if(t==tc)
+        paminus=ps-pm2*sin(delta);
+        paplus=ps-pm3*sin(delta);
+        paav=(paminus+paplus)/2;
+        pa=paav;
+    end
+    if(t>tf&t<tc)
+        pa=ps-pm2*sin(delta);
+    end
+    if(t>tc)
+        pa=ps-pm3*sin(delta);
+    end
+    ddelta=ddelta+tstep*tstep*pa/m;
+    ddelta=(delta*180/pi+ddelta)*pi/180;
+    deltadeg=delta*(180/pi);
+    t=t+tstep;
+    %paus
+    time(i)=t
+    ang(i)=deltadeg
+    i=i+1
+end
+axis([0 0.6 0 160])
+plot(time,ang 'ko-');
+grid
