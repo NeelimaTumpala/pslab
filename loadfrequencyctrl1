@@ -1,0 +1,12 @@
+clc
+clear all
+p1=0.2
+num=[0.1 0.7 1];
+den=[1 7.08 10.56 20.8]
+t=0:0.02:10;
+c=-p1*step(num,den,t);
+plot(t,c);
+xlabel('sec')
+ylabel('pu')
+grid
+timespac(num,den)
